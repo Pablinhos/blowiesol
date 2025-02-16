@@ -36,9 +36,8 @@ const Index = () => {
     const createMoonEmoji = () => {
       const emoji = document.createElement('div');
       emoji.textContent = '🌙';
-      emoji.className = 'fixed text-4xl pointer-events-none animate-fall';
+      emoji.className = 'fixed text-6xl pointer-events-none animate-fall';
       emoji.style.left = `${Math.random() * 100}vw`;
-      emoji.style.animationDuration = `${Math.random() * 2 + 1}s`;
       document.body.appendChild(emoji);
 
       setTimeout(() => {
@@ -60,6 +59,11 @@ const Index = () => {
       });
     };
   }, [isRaining]);
+
+  const handleMoonClick = () => {
+    console.log('Moon button clicked, current state:', !isRaining);
+    setIsRaining(!isRaining);
+  };
 
   return (
     <div className="min-h-screen">
@@ -116,7 +120,7 @@ const Index = () => {
               Buy $BLOWIE Now
             </a>
             <button 
-              onClick={() => setIsRaining(!isRaining)}
+              onClick={handleMoonClick}
               className={`p-3 rounded-full transition-all ${isRaining ? 'bg-primary text-white' : 'bg-white/10 text-primary'} hover:scale-110 animate-float`}
               style={{ animationDelay: "0.6s" }}
             >

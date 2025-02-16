@@ -35,5 +35,5 @@
 }
 
 .animate-fall {
-  animation: fall linear forwards;
+  animation: fall 3s linear forwards;
 }
