@@ -1,11 +1,8 @@
-
-import { useEffect } from "react";
-import { ExternalLink, Menu, Moon } from "lucide-react";
-import { useState } from "react";
+import { useEffect, useState } from "react"; 
+import { ExternalLink, Menu } from "lucide-react";
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [isRaining, setIsRaining] = useState(false);
 
   useEffect(() => {
     const observerOptions = {
@@ -29,41 +26,6 @@ const Index = () => {
 
     return () => observer.disconnect();
   }, []);
-
-  useEffect(() => {
-    if (!isRaining) return;
-
-    const createMoonEmoji = () => {
-      const emoji = document.createElement('div');
-      emoji.textContent = '🌙';
-      emoji.className = 'fixed text-6xl pointer-events-none animate-fall';
-      emoji.style.left = `${Math.random() * 100}vw`;
-      document.body.appendChild(emoji);
-
-      setTimeout(() => {
-        if (document.body.contains(emoji)) {
-          document.body.removeChild(emoji);
-        }
-      }, 3000);
-    };
-
-    const interval = setInterval(createMoonEmoji, 100);
-
-    return () => {
-      clearInterval(interval);
-      const emojis = document.querySelectorAll('.animate-fall');
-      emojis.forEach(emoji => {
-        if (document.body.contains(emoji)) {
-          document.body.removeChild(emoji);
-        }
-      });
-    };
-  }, [isRaining]);
-
-  const handleMoonClick = () => {
-    console.log('Moon button clicked, current state:', !isRaining);
-    setIsRaining(!isRaining);
-  };
 
   return (
     <div className="min-h-screen">
@@ -119,13 +81,7 @@ const Index = () => {
             >
               Buy $BLOWIE Now
             </a>
-            <button 
-              onClick={handleMoonClick}
-              className={`p-3 rounded-full transition-all ${isRaining ? 'bg-primary text-white' : 'bg-white/10 text-primary'} hover:scale-110 animate-float`}
-              style={{ animationDelay: "0.6s" }}
-            >
-              <Moon size={24} />
-            </button>
+            {/* Bottone delle emoticon rimosso */}
           </div>
         </div>
       </section>
