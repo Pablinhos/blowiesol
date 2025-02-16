@@ -1,3 +1,4 @@
+
 import { useEffect } from "react";
 import { ExternalLink, Menu, Moon } from "lucide-react";
 import { useState } from "react";
@@ -41,7 +42,9 @@ const Index = () => {
       document.body.appendChild(emoji);
 
       setTimeout(() => {
-        document.body.removeChild(emoji);
+        if (document.body.contains(emoji)) {
+          document.body.removeChild(emoji);
+        }
       }, 3000);
     };
 
@@ -50,7 +53,11 @@ const Index = () => {
     return () => {
       clearInterval(interval);
       const emojis = document.querySelectorAll('.animate-fall');
-      emojis.forEach(emoji => emoji.remove());
+      emojis.forEach(emoji => {
+        if (document.body.contains(emoji)) {
+          document.body.removeChild(emoji);
+        }
+      });
     };
   }, [isRaining]);
 
