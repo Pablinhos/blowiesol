@@ -1,6 +1,6 @@
 
 import { useEffect } from "react";
-import { Rocket, ChartLineUp, Users, ExternalLink } from "lucide-react";
+import { Rocket, ChartLine, Users, ExternalLink } from "lucide-react";
 
 const Index = () => {
   useEffect(() => {
@@ -79,7 +79,7 @@ const Index = () => {
             </div>
             <div className="glass-card p-6 animate-on-scroll">
               <div className="flex items-center gap-4">
-                <ChartLineUp className="text-primary" size={24} />
+                <ChartLine className="text-primary" size={24} />
                 <h3 className="text-xl font-semibold">Phase 2: Growth</h3>
               </div>
               <p className="mt-4 text-gray-300">Exchange listings, partnerships, and expanded marketing campaigns</p>
