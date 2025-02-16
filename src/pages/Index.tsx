@@ -1,8 +1,11 @@
 
 import { useEffect } from "react";
-import { Rocket, ChartLine, Users, ExternalLink } from "lucide-react";
+import { Rocket, ChartLine, Users, ExternalLink, Menu } from "lucide-react";
+import { useState } from "react";
 
 const Index = () => {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
   useEffect(() => {
     const observerOptions = {
       threshold: 0.1,
@@ -28,10 +31,36 @@ const Index = () => {
 
   return (
     <div className="min-h-screen">
+      {/* Navbar */}
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-secondary-dark/80 backdrop-blur-lg border-b border-white/10">
+        <div className="container mx-auto px-6 py-4">
+          <div className="flex items-center justify-between">
+            <a href="#" className="text-2xl font-bold text-primary">BLOWIE</a>
+            <div className="md:hidden">
+              <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="text-white">
+                <Menu size={24} />
+              </button>
+            </div>
+            <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row absolute md:relative top-full left-0 right-0 md:top-auto bg-secondary-dark md:bg-transparent p-4 md:p-0 gap-4 md:gap-8 border-b md:border-none border-white/10`}>
+              <a href="#roadmap" className="text-white hover:text-primary transition-colors">Roadmap</a>
+              <a href="#community" className="text-white hover:text-primary transition-colors">Community</a>
+              <button className="button-primary md:ml-4">Buy Now</button>
+            </div>
+          </div>
+        </div>
+      </nav>
+
       {/* Hero Section */}
       <section className="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-primary/20 to-secondary-dark z-0" />
-        <div className="container mx-auto text-center relative z-10">
+        <div className="container mx-auto text-center relative z-10 mt-16">
+          <div className="w-48 h-48 mx-auto mb-8 rounded-full overflow-hidden border-4 border-primary animate-float">
+            <img 
+              src="/lovable-uploads/9e81c6c6-c074-4032-a0b4-6432224cadf6.png" 
+              alt="BLOWIE Logo" 
+              className="w-full h-full object-cover"
+            />
+          </div>
           <h1 className="text-5xl md:text-7xl font-bold mb-4 animate-float">
             BLOWIE
           </h1>
@@ -44,29 +73,8 @@ const Index = () => {
         </div>
       </section>
 
-      {/* Tokenomics Section */}
-      <section className="py-20 px-6">
-        <div className="container mx-auto">
-          <h2 className="section-title animate-on-scroll">Tokenomics</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="glass-card p-6 animate-on-scroll">
-              <h3 className="text-xl font-semibold mb-4">Total Supply</h3>
-              <p className="text-3xl font-bold text-primary">69,420,000,000</p>
-            </div>
-            <div className="glass-card p-6 animate-on-scroll">
-              <h3 className="text-xl font-semibold mb-4">Initial Burn</h3>
-              <p className="text-3xl font-bold text-primary">42%</p>
-            </div>
-            <div className="glass-card p-6 animate-on-scroll">
-              <h3 className="text-xl font-semibold mb-4">Reward Rate</h3>
-              <p className="text-3xl font-bold text-primary">4.20%</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
       {/* Roadmap Section */}
-      <section className="py-20 px-6 bg-gradient-to-b from-secondary-dark to-primary/10">
+      <section id="roadmap" className="py-20 px-6 bg-gradient-to-b from-secondary-dark to-primary/10">
         <div className="container mx-auto">
           <h2 className="section-title animate-on-scroll">Roadmap</h2>
           <div className="space-y-8">
@@ -96,7 +104,7 @@ const Index = () => {
       </section>
 
       {/* Community Section */}
-      <section className="py-20 px-6">
+      <section id="community" className="py-20 px-6">
         <div className="container mx-auto">
           <h2 className="section-title animate-on-scroll">Join Our Community</h2>
           <div className="flex flex-col md:flex-row gap-6 justify-center items-center">
