@@ -1,10 +1,10 @@
-
 import { useEffect } from "react";
-import { ExternalLink, Menu } from "lucide-react";
+import { ExternalLink, Menu, Moon } from "lucide-react";
 import { useState } from "react";
 
 const Index = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isRaining, setIsRaining] = useState(false);
 
   useEffect(() => {
     const observerOptions = {
@@ -28,6 +28,31 @@ const Index = () => {
 
     return () => observer.disconnect();
   }, []);
+
+  useEffect(() => {
+    if (!isRaining) return;
+
+    const createMoonEmoji = () => {
+      const emoji = document.createElement('div');
+      emoji.textContent = '🌙';
+      emoji.className = 'fixed text-4xl pointer-events-none animate-fall';
+      emoji.style.left = `${Math.random() * 100}vw`;
+      emoji.style.animationDuration = `${Math.random() * 2 + 1}s`;
+      document.body.appendChild(emoji);
+
+      setTimeout(() => {
+        document.body.removeChild(emoji);
+      }, 3000);
+    };
+
+    const interval = setInterval(createMoonEmoji, 100);
+
+    return () => {
+      clearInterval(interval);
+      const emojis = document.querySelectorAll('.animate-fall');
+      emojis.forEach(emoji => emoji.remove());
+    };
+  }, [isRaining]);
 
   return (
     <div className="min-h-screen">
@@ -73,15 +98,24 @@ const Index = () => {
           <p className="text-xl md:text-2xl mb-8 text-primary-light animate-float" style={{ animationDelay: "0.2s" }}>
             Every man needs a blowie
           </p>
-          <a 
-            href="https://dexscreener.com/solana/AD1EgCQhnQENMm6sLZvMoV6R9o9ymANeV53cnmCBpump"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="button-primary animate-float"
-            style={{ animationDelay: "0.4s" }}
-          >
-            Buy $BLOWIE Now
-          </a>
+          <div className="flex gap-4 justify-center items-center">
+            <a 
+              href="https://dexscreener.com/solana/AD1EgCQhnQENMm6sLZvMoV6R9o9ymANeV53cnmCBpump"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="button-primary animate-float"
+              style={{ animationDelay: "0.4s" }}
+            >
+              Buy $BLOWIE Now
+            </a>
+            <button 
+              onClick={() => setIsRaining(!isRaining)}
+              className={`p-3 rounded-full transition-all ${isRaining ? 'bg-primary text-white' : 'bg-white/10 text-primary'} hover:scale-110 animate-float`}
+              style={{ animationDelay: "0.6s" }}
+            >
+              <Moon size={24} />
+            </button>
+          </div>
         </div>
       </section>
 
