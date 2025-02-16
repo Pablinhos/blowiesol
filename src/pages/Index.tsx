@@ -1,6 +1,6 @@
 
 import { useEffect } from "react";
-import { Rocket, ChartLine, Users, ExternalLink, Menu } from "lucide-react";
+import { ExternalLink, Menu } from "lucide-react";
 import { useState } from "react";
 
 const Index = () => {
@@ -41,10 +41,16 @@ const Index = () => {
                 <Menu size={24} />
               </button>
             </div>
-            <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row absolute md:relative top-full left-0 right-0 md:top-auto bg-secondary-dark md:bg-transparent p-4 md:p-0 gap-4 md:gap-8 border-b md:border-none border-white/10`}>
-              <a href="#roadmap" className="text-white hover:text-primary transition-colors">Roadmap</a>
+            <div className={`${isMenuOpen ? 'flex' : 'hidden'} md:flex flex-col md:flex-row absolute md:relative top-full left-0 right-0 md:top-auto bg-secondary-dark md:bg-transparent p-4 md:p-0 gap-4 md:gap-8 border-b md:border-none border-white/10 items-center`}>
               <a href="#community" className="text-white hover:text-primary transition-colors">Community</a>
-              <button className="button-primary md:ml-4">Buy Now</button>
+              <a 
+                href="https://dexscreener.com/solana/AD1EgCQhnQENMm6sLZvMoV6R9o9ymANeV53cnmCBpump"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="button-primary md:ml-4"
+              >
+                Buy Now
+              </a>
             </div>
           </div>
         </div>
@@ -67,39 +73,15 @@ const Index = () => {
           <p className="text-xl md:text-2xl mb-8 text-primary-light animate-float" style={{ animationDelay: "0.2s" }}>
             Every man needs a blowie
           </p>
-          <button className="button-primary animate-float" style={{ animationDelay: "0.4s" }}>
+          <a 
+            href="https://dexscreener.com/solana/AD1EgCQhnQENMm6sLZvMoV6R9o9ymANeV53cnmCBpump"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button-primary animate-float"
+            style={{ animationDelay: "0.4s" }}
+          >
             Buy $BLOWIE Now
-          </button>
-        </div>
-      </section>
-
-      {/* Roadmap Section */}
-      <section id="roadmap" className="py-20 px-6 bg-gradient-to-b from-secondary-dark to-primary/10">
-        <div className="container mx-auto">
-          <h2 className="section-title animate-on-scroll">Roadmap</h2>
-          <div className="space-y-8">
-            <div className="glass-card p-6 animate-on-scroll">
-              <div className="flex items-center gap-4">
-                <Rocket className="text-primary" size={24} />
-                <h3 className="text-xl font-semibold">Phase 1: Launch</h3>
-              </div>
-              <p className="mt-4 text-gray-300">Website launch, community building, and initial marketing push</p>
-            </div>
-            <div className="glass-card p-6 animate-on-scroll">
-              <div className="flex items-center gap-4">
-                <ChartLine className="text-primary" size={24} />
-                <h3 className="text-xl font-semibold">Phase 2: Growth</h3>
-              </div>
-              <p className="mt-4 text-gray-300">Exchange listings, partnerships, and expanded marketing campaigns</p>
-            </div>
-            <div className="glass-card p-6 animate-on-scroll">
-              <div className="flex items-center gap-4">
-                <Users className="text-primary" size={24} />
-                <h3 className="text-xl font-semibold">Phase 3: Expansion</h3>
-              </div>
-              <p className="mt-4 text-gray-300">NFT collection launch, governance implementation, and ecosystem development</p>
-            </div>
-          </div>
+          </a>
         </div>
       </section>
 
@@ -140,9 +122,14 @@ const Index = () => {
           <h2 className="text-4xl md:text-5xl font-bold mb-8 animate-on-scroll">
             Ready to Join the Revolution?
           </h2>
-          <button className="button-primary animate-on-scroll">
+          <a 
+            href="https://dexscreener.com/solana/AD1EgCQhnQENMm6sLZvMoV6R9o9ymANeV53cnmCBpump"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="button-primary animate-on-scroll"
+          >
             Buy $BLOWIE Now
-          </button>
+          </a>
         </div>
       </section>
     </div>
